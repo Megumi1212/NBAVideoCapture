@@ -15,19 +15,19 @@ import org.opencv.videoio.VideoCapture;
 import org.opencv.videoio.VideoWriter;
 import org.opencv.core.Size;
 
-//ÓÉÓÚÖî¶àÔ­Òò£¬¸Ã³ÌĞò²¢Ã»ÓĞÊ¹ÓÃÒ»¸ö±È½ÏÓÅĞãµÄËã·¨
-//ËäÈ»»ù±¾¿ÉÒÔÂú×ã×¼È·ÂÊºÍÕÙ»ØÂÊ90%£¨¿ÉÄÜ»áÓĞÒ»Ğ©Çé¿ö³öÏÖ£©£¬²»¹ıÔËĞĞËÙ¶È½ÏÂı
-//ÓĞ¿Õ»áÏë°ì·¨¸Ä½ø
+//ç”±äºè¯¸å¤šåŸå› ï¼Œè¯¥ç¨‹åºå¹¶æ²¡æœ‰ä½¿ç”¨ä¸€ä¸ªæ¯”è¾ƒä¼˜ç§€çš„ç®—æ³•
+//è™½ç„¶åŸºæœ¬å¯ä»¥æ»¡è¶³å‡†ç¡®ç‡å’Œå¬å›ç‡90%ï¼ˆå¯èƒ½ä¼šæœ‰ä¸€äº›æƒ…å†µå‡ºç°é”™è¯¯ï¼‰ï¼Œä¸è¿‡è¿è¡Œé€Ÿåº¦è¾ƒæ…¢
+//æœ‰ç©ºä¼šæƒ³åŠæ³•æ”¹è¿›
 
 public class Sample {
-    //ÉèÖÃAPPID/AK/SK
-    public static final String APP_ID = "ÄãµÄAppID";//AppID
-    public static final String API_KEY = "ÄãµÄAPI Key";//API Key
-    public static final String SECRET_KEY = "ÄãµÄSecret Key";//Secret Key
+    //è®¾ç½®APPID/AK/SK
+    public static final String APP_ID = "ä½ çš„AppID";//AppID
+    public static final String API_KEY = "ä½ çš„API Key";//API Key
+    public static final String SECRET_KEY = "ä½ çš„Secret Key";//Secret Key
     public static double pre_time;
     public static int cnt=0;
      
-    //ÅĞ¶Ï×Ö·û´®ÊÇ·ñÎªÊı×Ö
+    //åˆ¤æ–­å­—ç¬¦ä¸²æ˜¯å¦ä¸ºæ•°å­—
     public static boolean isNumber(String str) {
         Pattern pattern = Pattern.compile("-?[0-9]+\\.?[0-9]*");
         Matcher isNum = pattern.matcher(str);
@@ -36,23 +36,23 @@ public class Sample {
         }
         return true;
     }
-    //»ñÈ¡µ±Ç°Ö¡µÄ±ÈÈüÊ£ÓàÊ±¼ä
+    //è·å–å½“å‰å¸§çš„æ¯”èµ›å‰©ä½™æ—¶é—´
     public static double check(Mat frame) {
     	/*
-    	 * Èç¹ûÒªÉ¾³ı¼ÓÊ±²¿·Ö
-    	 * Ñ¡Ôñ½ØÈ¡°üº¬±ÈÈü½Ú´ÎµÄÇøÓò
-    	 * ÀûÓÃ°Ù¶ÈÎÄ×ÖÊ¶±ğAPI½øĞĞÊ¶±ğ
-    	 * Èç¹ûµÃµ½µÄ×Ö·û´®Îª"OT"£¬ÔòÍ£Ö¹ÊÓÆµ¶ÁÈ¡Ğ´Èë¡£
+    	 * å¦‚æœè¦åˆ é™¤åŠ æ—¶éƒ¨åˆ†
+    	 * é€‰æ‹©æˆªå–åŒ…å«æ¯”èµ›èŠ‚æ¬¡çš„åŒºåŸŸ
+    	 * åˆ©ç”¨ç™¾åº¦æ–‡å­—è¯†åˆ«APIè¿›è¡Œè¯†åˆ«
+    	 * å¦‚æœå¾—åˆ°çš„å­—ç¬¦ä¸²ä¸º"OT"ï¼Œåˆ™åœæ­¢è§†é¢‘è¯»å–å†™å…¥ã€‚
     	 */
-    	//½ØÈ¡Ê£Óà±ÈÈüÊ±³¤ÇøÓò
+    	//æˆªå–å‰©ä½™æ¯”èµ›æ—¶é•¿åŒºåŸŸ
     	int height = frame.rows();
         int width  = frame.cols();
         Rect rect = new Rect((int)width*15/31,(int)height*13/15,(int)width/20,(int)height/9);
         Mat roi_img = new Mat(frame,rect);
         Imgcodecs.imwrite("D:\\img\\"+cnt+".jpg",roi_img);
         
-        //ÀûÓÃ°Ù¶ÈAPI½øĞĞÎÄ×ÖÊ¶±ğ
-    	//³õÊ¼»¯Ò»¸öAipOcr
+        //åˆ©ç”¨ç™¾åº¦APIè¿›è¡Œæ–‡å­—è¯†åˆ«
+    	//åˆå§‹åŒ–ä¸€ä¸ªAipOcr
     	AipOcr client = new AipOcr(APP_ID, API_KEY, SECRET_KEY);
         String path = "D:\\img\\"+cnt+".jpg";
         cnt++;
@@ -80,33 +80,33 @@ public class Sample {
     
 	public static void main(String[] args) throws InterruptedException {
     	System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-    	//´ò¿ªÊÓÆµÎÄ¼ş
+    	//æ‰“å¼€è§†é¢‘æ–‡ä»¶
     	VideoCapture cap = new VideoCapture("read.avi");
     	pre_time=0.0;
-    	if(cap.isOpened()){//ÅĞ¶ÏÊÓÆµÊÇ·ñ´ò¿ª
-	    	//×ÜÖ¡Êı  
+    	if(cap.isOpened()){//åˆ¤æ–­è§†é¢‘æ˜¯å¦æ‰“å¼€
+	    	//æ€»å¸§æ•°  
 	    	double frameCount = cap.get(opencv_videoio.CV_CAP_PROP_FRAME_COUNT);
 	    	//System.out.println(frameCount);
 	    	
-	    	//Ö¡ÂÊ  
+	    	//å¸§ç‡  
 	    	double fpsx = cap.get(opencv_videoio.CV_CAP_PROP_FPS);  
 	    	int fps=(int)(fpsx+0.5);
 	    	//System.out.println(fps);
 	    	
-	    	//Ê±¼ä³¤¶È  
+	    	//æ—¶é—´é•¿åº¦  
 	    	double len = frameCount / fps;
 	    	//System.out.println(len);
 	    	Double d_s=new Double(len);
 	    	//System.out.println(d_s.intValue());
 	    	
-	    	//Ğ´ÈëÊÓÆµ
+	    	//å†™å…¥è§†é¢‘
 	    	Size sz=new Size(cap.get(opencv_videoio.CV_CAP_PROP_FRAME_WIDTH),cap.get(opencv_videoio.CV_CAP_PROP_FRAME_HEIGHT));
 	    	VideoWriter writer = new VideoWriter("write.avi",VideoWriter.fourcc('D','I','V','X') , fpsx , sz , true);
 	    	
 	    	Mat frame = new Mat();
 	    	boolean fg=false;
 	    	for(int i=1;i<=frameCount;i++){
-	    		//¶ÁÈ¡ÏÂÒ»Ö¡»­Ãæ  
+	    		//è¯»å–ä¸‹ä¸€å¸§ç”»é¢  
 	    		if(cap.read(frame)){  
 	    			if(fg==true) writer.write(frame);
 	    			if(i%fps==0) {
@@ -124,7 +124,7 @@ public class Sample {
     	}else {
     		System.out.println("Open failed!");
     	}
-    	//¹Ø±ÕÊÓÆµÎÄ¼ş  
+    	//å…³é—­è§†é¢‘æ–‡ä»¶  
     	cap.release();  
     }
 }
