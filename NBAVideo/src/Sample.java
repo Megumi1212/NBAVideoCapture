@@ -169,7 +169,7 @@ public class Sample {
     	//打开视频文件
     	//long startTime=System.currentTimeMillis();   //获取开始时间
     	
-    	VideoCapture cap = new VideoCapture("reed.mp4");
+    	VideoCapture cap = new VideoCapture("read.avi");
     	pre_time=9990.0;
     	if(cap.isOpened()){//判断视频是否打开
 	    	//总帧数  
